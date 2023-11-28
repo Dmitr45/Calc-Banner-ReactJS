@@ -1,0 +1,32 @@
+.price {
+  min-height: 300px;
+}
+.price h2 {
+  font-size: 15px;
+}
+.price lable {
+  margin-top: 50px;
+  font-size: 8px;
+}
+.price input {
+  display: block;
+  width: 180px;
+  height: 25px;
+  border-radius: 10px;
+  border-bottom: 1px solid #00b300;
+  outline: none;
+}
+.price_button {
+  margin-top: 15px;
+  display: block;
+  width: 200px;
+  height: 30px;
+  border-radius: 10px;
+  background-color: #00b300;
+  font-size: 15px;
+  line-height: 27px;
+  color: #fff;
+}
+.price_button:hover {
+  background-color: #66d266;
+}
