@@ -1,0 +1,51 @@
+.calcForm {
+  max-width: 1300px;
+  flex: 1 1 1300px;
+  display: flex;
+  flex-flow: column wrap;
+  align-content: center;
+}
+.calcForm h1 {
+  text-align: center;
+  font-weight: 600;
+  font-size: 2.5rem;
+}
+.calcForm_flex {
+  flex: 1 1 625px;
+  display: flex;
+  flex-flow: row wrap;
+}
+.calcForm_select {
+  min-width: 500px;
+  padding: 40px 130px;
+}
+.calcForm_price {
+  min-width: 400px;
+  padding: 40px;
+  background-color: #fafafa;
+}
+.calcForm_footer {
+  height: 60px;
+  padding: 30px 0;
+  text-align: center;
+  display: flex;
+  flex-flow: column wrap;
+  align-content: center;
+  border-top: 1px solid #ced4da;
+}
+.calcForm_footer .link {
+  display: block;
+  height: 30px;
+  margin: 0 8px 8px 0;
+  padding: 6px 12px;
+  border: 1px #303133 solid;
+  line-height: 28px;
+  color: #303133;
+  text-decoration: none;
+  border-radius: 10px;
+  max-width: 200px;
+}
+.calcForm_footer .link:hover {
+  background-color: #303133;
+  color: #fff;
+}
