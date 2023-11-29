@@ -34,16 +34,15 @@
   }
 }
 .calcForm {
+  font-size: 15px;
   max-width: 1300px;
   flex: 1 1 1300px;
   display: flex;
   flex-flow: column wrap;
   align-content: center;
 }
-.calcForm h1 {
+.calcForm .text-center {
   text-align: center;
-  font-weight: 600;
-  font-size: 2.5rem;
 }
 .calcForm_flex {
   flex: 1 1 625px;
@@ -55,11 +54,21 @@
   min-width: 200px;
   padding: 40px 40px;
 }
+.calcForm_select .kalk_colwrap {
+  padding: 40px 130px;
+}
 .calcForm_price {
-  flex: 0 1 200px;
+  flex: 0 1 400px;
   min-width: 200px;
-  padding: 40px;
+  padding: 40px 20px;
   background-color: #fafafa;
+}
+.calcForm_price .vp_wr {
+  margin-top: 40px;
+  display: block;
+  width: 100%;
+  font-size: 9px;
+  text-align: left;
 }
 .calcForm_footer {
   height: 60px;
@@ -72,7 +81,7 @@
 }
 .calcForm_footer .link {
   display: block;
-  height: 30px;
+  height: 42px;
   margin: 0 8px 8px 0;
   padding: 6px 12px;
   border: 1px #303133 solid;
@@ -86,7 +95,3 @@
   background-color: #303133;
   color: #fff;
 }
-
-
-
-

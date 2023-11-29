@@ -1,6 +1,6 @@
 import logo from './logo.svg';
-import './App.css';
-import Price from './components/price/Price';
+import './css/style.css';
+import Banners from './components/banners/Banner';
 
 
 function App() {
@@ -13,14 +13,9 @@ function App() {
       </header>
       <h1> Калькулятор расчета стоимости печати баннеров </h1>
 
-      <div className="calcForm_flex">
-        <div className="calcForm_select">
 
-        </div>
-        <div className="calcForm_price">
-          <Price/>
-        </div>
-      </div>
+      <Banners/>
+
 
       <div className="calcForm_footer">
         <a href="ya.ru" className="link"  >Tex.требования</a>

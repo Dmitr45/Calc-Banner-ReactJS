@@ -44,18 +44,18 @@
     $marker: #00b300;
     $base-background: #fff;
     $price-bacground: #fafafa; 
-
-
-    h1{
-        text-align: center;
-        font-weight: 600;
-        font-size: 2.5rem;
-    }
+    $price-muted: #6c757d;
+    font-size: 15px;
     max-width: 1300px;
     flex: 1 1 1300px;
     display: flex;
     flex-flow: column wrap;
     align-content: center;
+
+    .text-center{
+      text-align: center;
+    }
+    
     &_flex{
         flex: 1 1 625px;
         display: flex;
@@ -65,12 +65,22 @@
         flex: 1 1 200px;
         min-width: 200px;
         padding: 40px 40px;
+        .kalk_colwrap{
+          padding: 40px 130px;
+        }
     }
     &_price{
-        flex: 0 1 200px;
+        flex: 0 1 400px;
         min-width: 200px;
-        padding: 40px;
+        padding: 40px 20px;
         background-color: $price-bacground;
+        .vp_wr{
+          margin-top: 40px;
+          display: block;
+          width: 100%;
+          font-size: 9px;
+          text-align: left;
+        }
 
 
     }
@@ -84,7 +94,7 @@
         border-top: 1px solid #ced4da;
         .link {
             display: block;
-            height: 30px;
+            height: 42px;
             margin: 0 8px 8px 0;
             padding: 6px 12px;
             border: 1px $base-color solid;
@@ -100,3 +110,4 @@
       }
     }
 }
+
