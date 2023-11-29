@@ -1,6 +1,15 @@
 export default function Price(props) {
 
 const Cost = props.cost;
+const OptionsPropsText =  props.OptionsProps;
+//const OptionsPropsCost =  props.OptionsProps[1];
+
+const Options = (OptionsPropsText) => {
+return (
+<div>
+{OptionsPropsText.map(option => (<div className="text-start" >{option}</div>))}
+</div>
+    )};
 
 
     return (
@@ -15,6 +24,10 @@ const Cost = props.cost;
                     {Cost}
                 </span>    
                 ₽</div>
+                <div className="text-muted">
+                Включены услуги:
+                </div>
+                {Options(OptionsPropsText)}
                 <div className="klientdescount">
                 <span className="vp_wr">
                     <span className="vp_atext">Скидка постоянного клиента
