@@ -52,11 +52,21 @@
 }
 .calcForm_select {
   flex: 1 1 200px;
-  min-width: 200px;
+  min-width: 300px;
   padding: 40px 40px;
+}
+@media (max-width: 600px) {
+  .calcForm_select {
+    padding: 5px 5px;
+  }
 }
 .calcForm_select .kalk_colwrap {
   padding: 40px 130px;
+}
+@media (max-width: 600px) {
+  .calcForm_select .kalk_colwrap {
+    padding: 5px 5px;
+  }
 }
 .calcForm_price {
   flex: 0 1 400px;
