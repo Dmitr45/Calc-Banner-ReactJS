@@ -1,15 +1,22 @@
 import { useState, useEffect } from 'react';
-import Price from '../price/Price';
+import Price from '../price/Price'; // Компонент ценового предложения
+
+
+
+
+
+
+
 
 
 export default function Banners() { 
 
-let [Article, setArtikle] = useState(0); // Артикль материала
-let [Width, setWidth] = useState(1);     // Ширина
-let [Height, setHeight] = useState(1);   // Высота
-let [Resolution, setResolution] = useState(1); //Разрешение печати
-let [Area, setArea] = useState(1); // Площадь изделия
-let [Quantity, setQuantity] = useState(1); // Количество товара
+let [Article, setArtikle] = useState(0);       // Артикль материала
+let [Width, setWidth] = useState(1);           // Ширина
+let [Height, setHeight] = useState(1);         // Высота
+let [Resolution, setResolution] = useState(1); // Разрешение печати
+let [Area, setArea] = useState(1);             // Площадь изделия
+let [Quantity, setQuantity] = useState(1);     // Количество товара
 
 let  [Option0, setOption0] = useState(false);             
 let  [Option1, setOption1] = useState(false);              
@@ -27,7 +34,7 @@ const OptionInfo = [
                       [350, "Люверсы" ],
                       [150, "Карман" ],
                       [250, "Усиление шнуром" ],
-                      [50, "Поля" ],
+                      [50, "Поля"],
                       [652, "Проклейка/проварка" ],
                       [125, "Резка в размер" ],
                       [952, "Плакатный профиль" ],
@@ -65,7 +72,7 @@ useEffect(() => {
           optionsCost.push(OptionInfo[index][0]);
         }
     }
-console.log(optionsText);
+//console.log(optionsText);
 setOptionsProps(optionsText);
   setCost(Area*Article*Resolution*Quantity+sumOptions*Quantity);
 }, [Area, Article, Resolution, Quantity, Options]);
@@ -176,7 +183,7 @@ return(
                       <option value="1.2">600 dpi - сольвентная печать</option>
                       <option value="1.5">720 dpi - экосольвентная печать</option>
                       <option value="2">1440 dpi - экосольвентная печать</option>
-                   </select>
+                    </select>
                     </form>
                     </div>
                   </div>
