@@ -1,15 +1,9 @@
 import { useState, useEffect } from 'react';
 import Price from '../price/Price'; // Компонент ценового предложения
 
+export default function BannersPage() { 
 
 
-
-
-
-
-
-
-export default function Banners() { 
 
 let [Article, setArtikle] = useState(0);       // Артикль материала
 let [Width, setWidth] = useState(1);           // Ширина

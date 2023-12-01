@@ -2,11 +2,31 @@
 
 console.log("Object started");
 
-//  ======   Изделия и услуги         ================================================================
+
+//  ======  Категории      ================================================================
+class Category {
+constructor(params){
+    this.name = params.name
+}};
+
+const Banners = new Category ({ name: "Баннеры" });
+const Films = new Category ({ name: "Пленки, наклейки" });
+const Posters = new Category ({ name: "Бумага, плакаты, постеры, обои" });
+const Stands = new Category ({ name: "Мобильные стенды" });
+const Canvases = new Category ({ name: "Холсты, картины" });
+const Signs = new Category ({ name: "Таблички" });
+const StickerPack = new Category ({ name: "Плоттерная резка, стикерпаки" });
+const Polygraphy = new Category ({ name: "Полиграфическая продукция" });
+const UVprinting = new Category ({ name: "УФ печатьлистова" });
+
+
+
+
+//  ======  Баннеры       ================================================================
  class Banner {
      constructor(params) {
          this.name = params.name
-         this.category = params.category
+         this.category = Banners
          this.cost = params.cost
      }
  OptionSelect(){
@@ -21,6 +41,10 @@ console.log("Object started");
      category: "banners",
      cost: 420 //За квадрат базовый
  });
+
+//  ======  Пленки, Наклейки      ================================================================
+
+
 
 //  ======   Дополнительные функции   ================================================================
  class Additions {

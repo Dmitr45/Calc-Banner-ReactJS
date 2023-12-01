@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './css/style.css';
-import Banners from './components/banners/Banner';
+import PageSelection  from './components/PageSelection';
 
 
 function App() {
@@ -11,12 +11,7 @@ function App() {
           <img src={logo} className="App-logo" alt="logo" />
         </div>
       </header>
-      <h1> Калькулятор расчета стоимости печати баннеров </h1>
-
-
-      <Banners/>
-
-
+      <PageSelection/>
       <div className="calcForm_footer">
         <a href="ya.ru" className="link"  >Tex.требования</a>
         <a href="ya.ru" className="link">Гарантии</a>

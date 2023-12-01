@@ -34,6 +34,47 @@
     transform: rotate(360deg);
   }
 }
+html {
+  margin: 0 auto;
+}
+html body {
+  margin: 0 auto;
+  width: 1000px;
+}
+html body h1 {
+  font-size: 2.3rem;
+}
+
+.PageSelection .title_whis_text .gridwrap_grey {
+  padding: 30px;
+  border-radius: 5px;
+  height: 100%;
+  text-align: justify;
+  background-color: #F5F6F7;
+}
+.PageSelection .Page_Button {
+  padding-top: 20px;
+  margin-top: 30px;
+  height: 130px;
+  cursor: pointer;
+}
+.PageSelection .Page_Button .imgwrap {
+  height: 50px;
+}
+.PageSelection .Page_Button .imgwrap .img-fluid {
+  height: 100%;
+}
+.PageSelection .Page_Button:hover {
+  border: 1px solid #64bef2;
+  border-radius: 15px;
+}
+.PageSelection .Page_Button .linktext {
+  min-height: 48px;
+}
+.PageSelection .addition-select {
+  min-width: 49%;
+}
+
 .calcForm {
   font-size: 15px;
   max-width: 1300px;
@@ -46,6 +87,7 @@
   text-align: center;
 }
 .calcForm_flex {
+  margin-top: 50px;
   flex: 1 1 625px;
   display: flex;
   flex-flow: row wrap;
@@ -59,9 +101,6 @@
   .calcForm_select {
     padding: 5px 5px;
   }
-}
-.calcForm_select .kalk_colwrap {
-  padding: 40px 130px;
 }
 @media (max-width: 600px) {
   .calcForm_select .kalk_colwrap {

@@ -6,15 +6,6 @@ import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.css';
 
 
-//Добавляем функцию для добавления файла с объектами
-function appendScript(scriptToAppend) {
-  const script = document.createElement("script");
-  script.src = "/component/Object.js";
-  script.async = true;
-  document.body.appendChild(script);
-};
-appendScript(); // Добавляем js файл с объектами
-
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
