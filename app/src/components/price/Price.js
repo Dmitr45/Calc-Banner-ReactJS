@@ -2,6 +2,12 @@ import { useEffect, useState } from "react";
 
 export default function Price(props) {
 
+
+let [PropsName, setPropsName]  = useState(props.PriceCost);  
+useEffect(() => {
+    setPropsName(props.PriceName)
+}, [PropsName, props.PriceName]);
+
 let [PropsCost, setPropsCost] = useState(props.PriceCost);
 useEffect(() => {
     setPropsCost(props.PriceCost)
@@ -21,13 +27,11 @@ useEffect(() => {
 let [PropsPriceQuantity, setPropsPriceQuantity] = useState(props.PriceQuantity)
 useEffect(() => {
     setPropsPriceQuantity(props.PriceQuantity);
-    //console.log("PropsPriceQuantity : " + PropsPriceQuantity);
 }, [PropsPriceQuantity, props.PriceQuantity]);
 
 let [FullPrice, setFullPrice] = useState(0);
 useEffect(() => {
-    setFullPrice(PropsCost*PropsArea*PropsFactor*PropsPriceQuantity)
-    //console.log("Пропс:  " + props.PriceFactorResolution);
+    setFullPrice(Math.round(PropsCost*PropsArea*PropsFactor*PropsPriceQuantity))
 }, [PropsArea, props.Area, PropsCost, props.PriceCost, PropsFactor, props.PriceFactorResolution, PropsPriceQuantity, props.PropsPriceQuantity]);
 
 
@@ -52,6 +56,7 @@ return (
                 </span>    
                 ₽</div>
                 <div className="text-muted">
+                <div className="text-success">{PropsName}</div><br/>
                 Включены услуги:
                 </div>
 {/*Options(PropsAdd)*/}

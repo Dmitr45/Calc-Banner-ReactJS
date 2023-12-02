@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import Price from '../components/price/Price'; // Компонент ценового предложения
 
-export default function UVprintingPage() { 
+export default function ServicePage() { 
 
 //================================= Price ======================================================================
 class MyPrice {
@@ -22,8 +22,8 @@ class MyPrice {
         return sum
     }
 }
-let [PriceName, setPriceName] = useState('Услуга');
-let [PriceCategory, setPriceCategory] = useState("UVprinting");
+let [PriceName, setPriceName] = useState("Выберите материал");
+let [PriceCategory, setPriceCategory] = useState("Service");
 let [PriceCost, setPriceCost] = useState(0);
 let [PriceFactor, setPriceFactor] = useState(1);
 let [PriceArea, setPriceArea] = useState(1);
@@ -38,17 +38,22 @@ class MyService {
         this.cost = params.cost
     }
 }
+const Service0 = new MyService({name: "Выберите материал", cost: 0});
+const Service1 = new MyService({name: "Пластик 3мм", cost: 0});
+const Service2 = new MyService({name: "Пластик 5мм", cost: 0});
+const Service3 = new MyService({name: "Пленка самоклеющаяся", cost: 0});
+const Service4 = new MyService({name: "Бумага дизайнерская", cost: 360});
+const Service5 = new MyService({name: "Визитки", cost: 0});
+const Service6 = new MyService({name: "Материал клиента", cost: 0});
 
-const UVprinting1 = new MyService({name: "Пластик 3мм", cost: 0});
-const UVprinting2 = new MyService({name: "Пластик 5мм", cost: 0});
-const UVprinting3 = new MyService({name: "Пленка самоклеющаяся", cost: 0});
-const UVprinting4 = new MyService({name: "Бумага дизайнерская", cost: 360});
-const UVprinting5 = new MyService({name: "Визитки", cost: 0});
-const UVprinting6 = new MyService({name: "Материал клиента", cost: 0});
-
-useEffect(() => {     setPriceCost( PriceCost);
+const Services = [Service0, Service1, Service2, Service3, Service4, Service5, Service6]
+useEffect(() => {     
+    setPriceCost(Services.find(item=> item.name === PriceName).cost);
     console.log(PriceCost);
-}, [PriceCost]);
+    console.log(PriceName);
+}, [PriceName]);
+
+
 
 
 //    Размер
@@ -87,7 +92,7 @@ useEffect(() => { setPriceQuantity(PriceQuantity);
 
 //=====================================================================================================================
 return(
-<div className="calcForm_flex">
+<div className="calcForm_flex shadow mb-5 bg-white rounded">
     <div className="calcForm_select">
         <div className='kalk_colwrap'>
 {/*============================== Вариабельная часть ===========================================================================*/}
@@ -103,18 +108,18 @@ return(
                     <select 
                       name="article" 
                       className="mt-2 mb-2 form-control ng-pristine ng-untouched ng-valid"
-                      value={PriceCost}
+                      value={PriceName}
                       onChange={(e) =>
-                        setPriceCost(e.target.value)}
+                        setPriceName(e.target.value)}
                     >
-                      <option value="0">"Выберите материал"</option>
-                      <option value={UVprinting1.cost}>{UVprinting1.name}</option>
-                      <option value={UVprinting2.cost}>{UVprinting2.name}</option>                      
-                      <option value={UVprinting2.cost}>{UVprinting2.name}</option>
-                      <option value={UVprinting3.cost}>{UVprinting3.name}</option>
-                      <option value={UVprinting4.cost}>{UVprinting4.name}</option>
-                      <option value={UVprinting5.cost}>{UVprinting5.name}</option>
-                      <option value={UVprinting6.cost}>{UVprinting6.name}</option>
+                       <option value={Service0.name}>"Выберите материал"</option>
+                      <option value={Service1.name}>{Service1.name}</option>
+                      <option value={Service2.name}>{Service2.name}</option>                      
+                      <option value={Service2.name}>{Service2.name}</option>
+                      <option value={Service3.name}>{Service3.name}</option>
+                      <option value={Service4.name}>{Service4.name}</option>
+                      <option value={Service5.name}>{Service5.name}</option>
+                      <option value={Service6.name}>{Service6.name}</option>
                     </select>
                     </form>
                     </div>
@@ -199,7 +204,7 @@ return(
     </div>
 {/*============================== Форма заказа ===========================================================================*/}
 <div className="calcForm_price">
-        <Price PriceCost={PriceCost} Area={Area} PriceFactorResolution={PriceFactorResolution} PriceQuantity={PriceQuantity} />
+        <Price PriceName={PriceName} PriceCost={PriceCost} Area={Area} PriceFactorResolution={PriceFactorResolution} PriceQuantity={PriceQuantity} />
     </div>
 </div>
 )};

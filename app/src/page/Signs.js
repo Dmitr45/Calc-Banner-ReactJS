@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import Price from '../components/price/Price'; // Компонент ценового предложения
 
-export default function BannerPage() { 
+export default function ServicePage() { 
 
 //================================= Price ======================================================================
 class MyPrice {
@@ -22,7 +22,7 @@ class MyPrice {
         return sum
     }
 }
-let [PriceName, setPriceName] = useState('Услуга');
+let [PriceName, setPriceName] = useState("Выберите материал");
 let [PriceCategory, setPriceCategory] = useState("Баннеры");
 let [PriceCost, setPriceCost] = useState(0);
 let [PriceFactor, setPriceFactor] = useState(1);
@@ -38,14 +38,21 @@ class MyService {
         this.cost = params.cost
     }
 }
+const Service0 = new MyService({name: "Выберите материал", cost: 0});
+const Service1 = new MyService({name: "Пластик 3мм + накатка пленки", cost: 0});
+const Service2 = new MyService({name: "Пластик 5мм + накатка пленки", cost: 0});
+const Service3 = new MyService({name: "Пенокартон 5мм + накатка пленки", cost: 0});
+const Service4 = new MyService({name: "Пластик 3мм + светонакопительная пленка (планы эвакуации)", cost: 0});
+const Service5 = new MyService({name: "Пластик 10мм + накатка пленки", cost: 0});
+const Service6 = new MyService({name: "Пластик 5мм ЧЕРНЫЙ", cost: 0});
+const Service7 = new MyService({name: "Пластик 1мм", cost: 0});
 
-const Banner1 = new MyService({name: "Пластик 3мм + накатка пленки", cost: 0});
-const Banner2 = new MyService({name: "Пластик 5мм + накатка пленки", cost: 0});
-const Banner3 = new MyService({name: "Пенокартон 5мм + накатка пленки", cost: 0});
-const Banner4 = new MyService({name: "Пластик 3мм + светонакопительная пленка (планы эвакуации)", cost: 0});
-const Banner5 = new MyService({name: "Пластик 10мм + накатка пленки", cost: 0});
-const Banner6 = new MyService({name: "Пластик 5мм ЧЕРНЫЙ", cost: 0});
-const Banner7 = new MyService({name: "Пластик 1мм", cost: 0});
+const Services = [Service0, Service1, Service2, Service3, Service4, Service5, Service6, Service7]
+useEffect(() => {     
+    setPriceCost(Services.find(item=> item.name === PriceName).cost);
+    console.log(PriceCost);
+    console.log(PriceName);
+}, [PriceName]);
 
 
 //    Размер
@@ -87,7 +94,7 @@ useEffect(() => { setPriceQuantity(PriceQuantity);
 
 //=====================================================================================================================
 return(
-<div className="calcForm_flex">
+<div className="calcForm_flex shadow mb-5 bg-white rounded">
     <div className="calcForm_select">
         <div className='kalk_colwrap'>
 {/*============================== Вариабельная часть ===========================================================================*/}
@@ -103,18 +110,18 @@ return(
                     <select 
                       name="article" 
                       className="mt-2 mb-2 form-control ng-pristine ng-untouched ng-valid"
-                      value={PriceCost}
+                      value={PriceName}
                       onChange={(e) =>
-                        setPriceCost(e.target.value)}
+                        setPriceName(e.target.value)}
                     >
-                      <option value="0">"Выберите материал"</option>
-                      <option value={Banner1.cost}>{Banner1.name}</option>
-                      <option value={Banner2.cost}>{Banner2.name}</option>
-                      <option value={Banner3.cost}>{Banner3.name}</option>
-                      <option value={Banner4.cost}>{Banner4.name}</option>
-                      <option value={Banner5.cost}>{Banner5.name}</option>
-                      <option value={Banner6.cost}>{Banner6.name}</option>
-                      <option value={Banner7.cost}>{Banner7.name}</option>
+                       <option value={Service0.name}>"Выберите материал"</option>
+                      <option value={Service1.name}>{Service1.name}</option>
+                      <option value={Service2.name}>{Service2.name}</option>
+                      <option value={Service3.name}>{Service3.name}</option>
+                      <option value={Service4.name}>{Service4.name}</option>
+                      <option value={Service5.name}>{Service5.name}</option>
+                      <option value={Service6.name}>{Service6.name}</option>
+                      <option value={Service7.name}>{Service7.name}</option>
                     </select>
                     </form>
                     </div>
@@ -199,7 +206,7 @@ return(
     </div>
 {/*============================== Форма заказа ===========================================================================*/}
 <div className="calcForm_price">
-        <Price PriceCost={PriceCost} Area={Area} PriceFactorResolution={PriceFactorResolution} PriceQuantity={PriceQuantity} />
+        <Price PriceName={PriceName} PriceCost={PriceCost} Area={Area} PriceFactorResolution={PriceFactorResolution} PriceQuantity={PriceQuantity} />
     </div>
 </div>
 )};
