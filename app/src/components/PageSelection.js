@@ -12,6 +12,7 @@ class Category {
         this.name = params.name
         this.title = params.title
         this.src = params.src
+
     }};
         
         const Banners = new Category ({ name: "Баннеры", title: "Калькулятор расчета стоимости печати баннеров", src: "https://wowbanner.ru/sites/default/files/2023-04/icon%20%282%29.png"});
@@ -25,11 +26,72 @@ class Category {
         const UVprinting = new Category ({ name: "УФ печатьлистова", title: "Калькулятор УФ печати", src: "https://wowbanner.ru/sites/default/files/2023-04/icon%20%285%29.png"  });
 
 let [ListCategory, setListCategory] = useState([Banners, Films, Posters, Stands, Canvases, Signs, StickerPack, Polygraphy, UVprinting]);
-let [ActivCategory, setActivCategory] = useState(3);
+let [ActivCategory, setActivCategory] = useState(0);
+let [Page, setPage] = useState();
+
+
+useEffect(() => {
+let FunctionPage = [
+    < BannerPage />,
+                    ];
+
+    setPage(FunctionPage[ActivCategory]);
+}, [ActivCategory]);
+
+function NowPage(){
+    return Page
+}
+
+
+
+
+//  ======   Разрешение печати   ================================================================
+
+    class MyResolution {
+        constructor(params){
+            this.name = params.name
+            this.factor = params.factor
+        }}
+
+function PrintResolution(ArrResolution) { 
+return (
+<div className='frm_line mt-5'>
+                <div className='frm_flab d-flex justify-content-between fw-bold'>
+                <span>Разрешение печати</span>
+                </div>
+                <div className='frm_inp'>
+                  <div className='frm_inpline'>
+                    <div className='csel ng-pristine ng-untouched ng-valid'>
+                    <form>
+                    <select 
+                        name="article" 
+                        className="mt-2 mb-2 form-control ng-pristine ng-untouched ng-valid"
+                        value={PriseFactor}
+                        onChange={(e) =>
+                        setPriseFactor(e.target.value)} >
+                        <option value="0">Выберите разрешение печати</option>
+                        {ArrResolution.map((resolution)=>{return(
+                        <option value={resolution.factor}>{resolution.name}</option>)
+                        })}
+                    </select>
+                    </form>
+                    </div>
+                  </div>
+                </div>
+</div>
+)};
+
+
+
+
 
 //  ======   Дополнительные функции   ================================================================
+
+
+
     class Additions {
         constructor (params) {
+            this.activ = params.activ
             this.name = params.name
             this.cost = params.cost
             this.info = params.info
@@ -61,12 +123,14 @@ let [ActivCategory, setActivCategory] = useState(3);
         const SkruglenieUglov = new Additions ({ name: "Скругление углов", cost: 200,  info: "Скругление 4-х углов изделия" });
         const UFpechat = new Additions ({ name: "УФ печать", cost: 100,  info: "Листовая печать, не рулонная. УФ печать белой краской, лаком и cmyk, максимальный размер печати 600х900мм " });
 
-let [ListAdditions, setListAdditions] = useState([]);
-
+let [ListAdditions, setListAdditions] = useState([UFpechat, SkruglenieUglov]);
 
 
 
 function AdditionsTarget(ListAdditions){
+
+
+
 
 let  [Option0, setOption0] = useState(false);             
 let  [Option1, setOption1] = useState(false);              
@@ -79,6 +143,8 @@ let  [Option7, setOption7] = useState(false);
 let  [Option8, setOption8] = useState(false);              
 let  [Option9, setOption9] = useState(false);   
 let  [Options, setOptions] = useState([Option0, Option1,  Option2, Option3, Option4, Option5, Option6, Option7, Option8,  Option9]);
+
+const [checked, setChecked] = useState(true);
 
 return (    
     <div className='frm_line mt-5'>
@@ -97,7 +163,7 @@ return (
                     {ListAdditions.map((addition)=>{
                     return(
                     <div className="addition-select col-sm">
-                        <input className="form-check-input" type="checkbox"  checked={setOptions[ListAdditions.indexOf(addition)]} onChange={() => setOption0(!setOptions[ListAdditions.indexOf(addition)])} id="defaultCheck1"></input>
+                        <input className="form-check-input" type="checkbox"  id={addition.name} checked={checked} onChange={()=>{setChecked(!checked)}} ></input>
                         <label className="form-check-label" for="defaultCheck1">&emsp;{addition.name}&emsp;</label>
                     <br/>
                     </div>    
@@ -117,8 +183,44 @@ return (
 
 
 
-
 //================================= End Objects ======================================================================
+
+//================================= Количество ======================================================================
+function QuantityTarget(){
+
+return(
+<div className='frm_line mt-5'>
+                <div className='frm_flab d-flex justify-content-between fw-bold'>
+                <span>Количество</span>
+                </div>
+                <div className='frm_inp'>
+                  <div className='frm_inpline'>
+                    <div className="row">
+                      <div className="col-sm">
+                        <div className='csel ng-pristine ng-untouched ng-valid'>
+                          <form>
+                          <span>---1-</span><input className="form-check-input" type="radio" name="Quantity" value="1" onChange={(e) => setPriceQuantity(e.target.value)}></input>
+                          <span>---2-</span><input className="form-check-input" type="radio" name="Quantity" value="2" onChange={(e) => setPriceQuantity(e.target.value)}></input>
+                          <span>---3-</span><input className="form-check-input" type="radio" name="Quantity" value="3" onChange={(e) => setPriceQuantity(e.target.value)}></input>
+                          <span>---4-</span><input className="form-check-input" type="radio" name="Quantity" value="4" onChange={(e) => setPriceQuantity(e.target.value)}></input>
+                          <span>---5-</span><input className="form-check-input" type="radio" name="Quantity" value="5" onChange={(e) => setPriceQuantity(e.target.value)}></input>
+                          <span>---6-</span><input className="form-check-input" type="radio" name="Quantity" value="6" onChange={(e) => setPriceQuantity(e.target.value)}></input>
+                          <span>---7-</span><input className="form-check-input" type="radio" name="Quantity" value="7" onChange={(e) => setPriceQuantity(e.target.value)}></input>
+                          <span>---8-</span><input className="form-check-input" type="radio" name="Quantity" value="8" onChange={(e) => setPriceQuantity(e.target.value)}></input>
+                          <span>---9-</span><input className="form-check-input" type="radio" name="Quantity" value="9" onChange={(e) => setPriceQuantity(e.target.value)}></input>
+                          <span>---10-</span><input className="form-check-input" type="radio" name="Quantity" value="10" onChange={(e) => setPriceQuantity(e.target.value)}></input>
+                          <span>---</span>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+)};
+
+//PriceQuantity      Количество товара
+
 
 //================================= Price ======================================================================
 class MyPrice {
@@ -126,15 +228,36 @@ class MyPrice {
         this.name = params.name             // Наименование услуги     ''
         this.category = params.category     // Категория тавара        ''
         this.cost = params.cost             // Стоимость базовая       00
-        this.factor = params.factor         // Множитель за качество   {Фактор '': наценка 0.0} 
+        this.factor = params.factor         // Множитель за качество   [Фактор '', наценка 0.0]
         this.area = params.area             // Площадь                 mm2
         this.quantity = params.quantity     // Количество              00
-        this.add = params.add               // Дополнительные услуги   [{Услуга: цена}{Услуга: цена}]
+        this.add = params.add               // Дополнительные услуги   [[Услуга, цена],   [Услуга, цена]]
     }
-    
-
-
+    additionCost(){ //Стоимость дополнений
+        let sum= 0;
+        for (let i=0; i< this.add.length ; i++){
+            sum+= this.add[i][1];
+        }
+        return sum
+    }
 }
+
+let [PriceName, setPriceName] = useState('Услуга');
+let [PriceCategory, setPriceCategory] = useState("Баннеры");
+let [PriceCost, setPriceCost] = useState(1);
+let [PriseFactor, setPriseFactor] = useState(['Высокое качество', 1]);
+let [PriceArea, setPriceArea] = useState(1);
+let [PriceQuantity, setPriceQuantity] = useState(0);
+let [PriceAdd, setPriceAdd] = useState([["Дополнений нет",0]]);
+
+let [MyPriceObject, setMyPriceObject] = useState(new MyPrice ({name: PriceName, category : PriceCategory, cost:  PriceCost, factor: PriseFactor, area: PriceArea,  quantity: PriceQuantity, add: PriceAdd}))
+
+
+useEffect(() => {
+    setMyPriceObject(new MyPrice ({name: PriceName, category : PriceCategory, cost:  PriceCost, factor: PriseFactor, area: PriceArea,  quantity: PriceQuantity, add: PriceAdd}));
+
+}, [PriceName, PriceCategory, PriceCost, PriseFactor, PriceArea, PriceQuantity, PriceAdd]);
+
 
 
 
@@ -143,19 +266,68 @@ class MyPrice {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+//  ======   Страница Баннеры   ================================================================
+function BannerPage() {
+    class MyBanner {
+        constructor (param){
+            this.name = param.name
+            this.cost = param.cost
     
+    
+        }};
+    
+        let dpi360 = new MyResolution ({name: "360 dpi - сольвентная печать", factor: 1}); 
+        let dpi600 = new MyResolution ({name: "600 dpi - сольвентная печать", factor: 1.1}); 
+        let dpi720 = new MyResolution ({name: "720 dpi - экосольвентная печать", factor: 1.25}); 
+        let dpi1440 = new MyResolution ({name: "1440 dpi - экосольвентная печать", factor: 1.3}); 
+    
+        return(
+        <div className='frm_line mt-3'>
+            <div className='frm_flab d-flex justify-content-between fw-bold'>
+                <span>Материал</span>
+                </div>
+                <div className='frm_inp'>
+                <div className='frm_inpline'>
+                <div className='csel ng-pristine ng-untouched ng-valid'>
+                <form>
+                <select 
+                name='article' 
+                className='mt-2 mb-2 form-control ng-pristine ng-untouched ng-valid'
+                //   value={Article}
+                //   onChange={(e) =>
+                //     setArtikle(e.target.value)}
+                >
+                <option value="">Выберите материал</option>
+                <option value="10">Баннер ламинированный 440гр</option>
+                <option value="20">Баннер литой 510гр</option>
+                <option value="30">Блэкаут светоблокирующий односторонний</option>
+                <option value="40">Сетка баннерная</option>
+                <option value="50">Бэклит</option>
+                <option value="60">ПЭТ-баннер</option>
+                <option value="70">Баннер огнеупорный 510гр</option>
+                <option value="80">Блэкаут светоблокирующий двухсторонний</option>
+                <option value="90">Транслюсцентный баннер</option>
+                <option value="100">Флаг</option>
+                </select>
+                </form>
+                </div>
+            </div>
+        </div>
+        {PrintResolution([dpi360, dpi600, dpi720, dpi1440])}
+      </div>
+                            
+    )};
+    
+
+
+
+/*============================== ENDDD ===============================================================================*/ 
+
+
+
+
+
+
 return(
 /*============================== Header ===============================================================================*/ 
 <div className='PageSelection block-b5subtheme-page-title'>
@@ -195,20 +367,17 @@ return(
         <div className='kalk_colwrap'>
 
 
+{/*============================== Страница ======================================================++++++++++============*/}
 
-{/*============================== Дополнительные услуги ==================================================================*/}
+<NowPage/>
+{QuantityTarget()}
 {AdditionsTarget(ListAdditions)}
 
-{/*============================== END Дополнительные услуги ==============================================================*/}
     </div>
 </div>
 {/*============================== Форма заказа ===========================================================================*/}
 <div className="calcForm_price">
-
-    <Price  cost={0} OptionsProps={[]} />
-
-
-
+    <Price  MyPriceObject={MyPriceObject}  />
 </div>
 
 

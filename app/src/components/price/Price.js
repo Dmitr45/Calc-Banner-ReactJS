@@ -1,13 +1,40 @@
+import { useEffect, useState } from "react";
+
 export default function Price(props) {
 
-const Cost = props.cost;
-const OptionsPropsText =  props.OptionsProps;
-//const OptionsPropsCost =  props.OptionsProps[1];
+let [PropsCost, setPropsCost] = useState(props.PriceCost);
+useEffect(() => {
+    setPropsCost(props.PriceCost)
+}, [PropsCost, props.PriceCost]);
 
-const Options = (OptionsPropsText) => {
+let [PropsArea, setPropsArea] = useState(props.Area)
+useEffect(() => {
+    setPropsArea(props.Area)
+}, [PropsArea, props.Area]);
+
+let [PropsFactor, setPropsFactor] = useState(props.PriceFactorResolution)
+useEffect(() => {
+    setPropsFactor(props.PriceFactorResolution);
+    console.log(props.PriceFactorResolution);
+}, [PropsFactor, props.PriceFactorResolution]);
+
+let [PropsPriceQuantity, setPropsPriceQuantity] = useState(props.PriceQuantity)
+useEffect(() => {
+    setPropsPriceQuantity(props.PriceQuantity);
+    //console.log("PropsPriceQuantity : " + PropsPriceQuantity);
+}, [PropsPriceQuantity, props.PriceQuantity]);
+
+let [FullPrice, setFullPrice] = useState(0);
+useEffect(() => {
+    setFullPrice(PropsCost*PropsArea*PropsFactor*PropsPriceQuantity)
+    //console.log("Пропс:  " + props.PriceFactorResolution);
+}, [PropsArea, props.Area, PropsCost, props.PriceCost, PropsFactor, props.PriceFactorResolution, PropsPriceQuantity, props.PropsPriceQuantity]);
+
+
+const Options = (PropsAdd) => {
 return (
 <div>
-{OptionsPropsText.map(option => (<div className="text-start" >{option}</div>))}
+{PropsAdd.map(option => (<div className="d-flex flex-row justify-content-between" > <div className="justify-content-start">{option[0]}</div> <div className="justify-content-end" >+{option[1]}₽</div></div>))}
 </div>
     )};
 
@@ -21,13 +48,13 @@ return (
                 </div>
                 <div className="h3">
                 <span ng-bind="kalk.data.price" className="ng-binding">
-                    {Cost}
+{FullPrice}
                 </span>    
                 ₽</div>
                 <div className="text-muted">
                 Включены услуги:
                 </div>
-                {Options(OptionsPropsText)}
+{/*Options(PropsAdd)*/}
                 <div className="klientdescount">
                 <span className="vp_wr">
                     <span className="vp_atext">Скидка постоянного клиента
