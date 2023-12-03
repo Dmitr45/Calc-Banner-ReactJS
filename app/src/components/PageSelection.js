@@ -123,7 +123,7 @@ return (
         const SkruglenieUglov = new Additions ({ name: "Скругление углов", cost: 200,  info: "Скругление 4-х углов изделия" });
         const UFpechat = new Additions ({ name: "УФ печать", cost: 100,  info: "Листовая печать, не рулонная. УФ печать белой краской, лаком и cmyk, максимальный размер печати 600х900мм " });
 
-let [ListAdditions, setListAdditions] = useState([UFpechat, SkruglenieUglov]);
+
 
 
 
@@ -168,8 +168,6 @@ return (
                     <br/>
                     </div>    
                     )})}
-
-
                 </div>
               </form>
             </div>

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import Price from '../components/price/Price'; // Компонент ценового предложения
+import Additional from '../components/additional/Additional';  // Дополнительные опции
 
 export default function BannerPage() { 
 
@@ -29,6 +30,7 @@ let [PriceFactor, setPriceFactor] = useState(1);
 let [PriceArea, setPriceArea] = useState(1);
 let [PriceQuantity, setPriceQuantity] = useState(1);
 let [PriceAdd, setPriceAdd] = useState([["Дополнений нет",0]]);
+
 
 
 //================================= Вариабельная часть логики ======================================================================
@@ -96,7 +98,23 @@ useEffect(() => { setPriceQuantity(PriceQuantity);
     //console.log(PriceQuantity )
 }, [PriceQuantity]);
 
+//   ============= Дополнения ===============
+class Additions {
+  constructor (params) {
+      this.activ = params.activ
+      this.name = params.name
+      this.cost = params.cost
+      this.info = params.info
+  }
+AdditionalInfo(){
+return [this.name, this.cost]
+}
+};
+const Lyuversy = new Additions ({ name: "Люверсы", cost: 160, info:  "Люверсы - металлические отверстия круглой формы состоящие из двух частей – кольца и элемента с втулкой. Устанавливают по периметру полотна с подворотом края. Предназначены для качественного натяжения и крепления полотна." });
+const Karman = new Additions ({ name: "Карман", cost: 100,  info: "Карман под утяжелитель - размещается в нижней части баннера для размещения утяжеляющих элементов. Если нужны карманы не только снизу, просьба прописывать это в задании." });
 
+
+let [ListAdditions, setListAdditions] = useState([Lyuversy, Karman ]);
 
 
 //=====================================================================================================================
@@ -238,6 +256,10 @@ return(
                   </div>
                 </div>
               </div>
+{/*=====================  Дополнения  ====================================*/}
+
+<Additional ListAdditions ={ListAdditions} />
+
 
 {/*============================== END Вариабельная часть ===========================================================================*/}
         </div>
