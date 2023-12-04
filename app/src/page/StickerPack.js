@@ -23,12 +23,16 @@ class MyPrice {
     }
 }
 let [PriceName, setPriceName] = useState("Выберите материал");
+let [ServiceActive, setServiceActive  ] = useState({name: "Выберите материал", cost: 0 , additionals: [ ]});
 let [PriceCategory, setPriceCategory] = useState("Баннеры");
 let [PriceCost, setPriceCost] = useState(0);
 let [PriceFactor, setPriceFactor] = useState(1);
 let [PriceArea, setPriceArea] = useState(1);
 let [PriceQuantity, setPriceQuantity] = useState(1);
 let [PriceAdd, setPriceAdd] = useState([["Дополнений нет",0]]);
+let [ListAdditions, setListAdditions] = useState([]);
+let [ListCheckedAdditions, setListCheckedAdditions] = useState([]);
+let [SumPriceAdditions, setSumPriceAdditions] = useState(0);
 
 
 //================================= Вариабельная часть логики ======================================================================
@@ -36,30 +40,149 @@ class MyService {
     constructor(params){
         this.name = params.name
         this.cost = params.cost
+        this.additionals = params.additionals
+        this.index = params.index
     }
 }
-const Service0 = new MyService({name: "Выберите материал", cost: 0});
-const Service1 = new MyService({name: "Визитки (50х90мм)", cost: 6});
-const Service2 = new MyService({name: "Листовки А5 (210х148мм)", cost: 16});
-const Service3 = new MyService({name: "Буклеты А4, 2 загиба", cost: 35});
-const Service4 = new MyService({name: "Листовки А6 (105х148мм)", cost: 7.5});
-const Service5 = new MyService({name: "Листовка А4 (210х297мм)", cost: 25});
-const Service6 = new MyService({name: "Флаер (99х210мм)", cost: 10});
-const Service7 = new MyService({name: "Бланк А4 (210х297мм)", cost: 18});
-const Service8 = new MyService({name: "Наклейка А4 (210х297мм)", cost: 30});
-const Service9 = new MyService({name: "Наклейка А5 (148х210мм)", cost: 19});
-const Service10 = new MyService({name: "Наклейка А6 (105х148мм)", cost: 15});
-const Service11 = new MyService({name: "Открытка А5 (148х210мм)", cost: 36});
-const Service12 = new MyService({name: "Постер А3 (297х420мм)", cost: 45});
-const Service13 = new MyService({name: "Грамота / Сертификат, А4 (297х210)", cost: 55});
-const Service14 = new MyService({name: "Изделие домик (на стол), высота 170мм", cost: 46});
+const Service0 = new MyService({name: "Выберите материал", cost: 0 ,additionals: [ { }]});
+const Service1 = new MyService({name: "Визитки (50х90мм)", cost: 6,additionals: [
+    { name: "Люверсы", checked: false, cost: 160},
+    { name: "Карман", checked: false, cost: 100},
+    { name: "Проклейка/проварка", checked: false, cost: 100},
+    { name: "Резка в размер", checked: false, cost: 40},
+    { name: "Усиление шнуром", checked: false, cost: 480},
+    { name: "Плакатный профиль", checked: false, cost: 800},
+    { name: "Поля", checked: false, cost: 100}
+    ]});
+const Service2 = new MyService({name: "Листовки А5 (210х148мм)", cost: 16,additionals: [
+    { name: "Люверсы", checked: false, cost: 160},
+    { name: "Карман", checked: false, cost: 100},
+    { name: "Проклейка/проварка", checked: false, cost: 100},
+    { name: "Резка в размер", checked: false, cost: 40},
+    { name: "Усиление шнуром", checked: false, cost: 480},
+    { name: "Плакатный профиль", checked: false, cost: 800},
+    { name: "Поля", checked: false, cost: 100}
+    ]});
+const Service3 = new MyService({name: "Буклеты А4, 2 загиба", cost: 35,additionals: [
+    { name: "Люверсы", checked: false, cost: 160},
+    { name: "Карман", checked: false, cost: 100},
+    { name: "Проклейка/проварка", checked: false, cost: 100},
+    { name: "Резка в размер", checked: false, cost: 40},
+    { name: "Усиление шнуром", checked: false, cost: 480},
+    { name: "Плакатный профиль", checked: false, cost: 800},
+    { name: "Поля", checked: false, cost: 100}
+    ]});
+const Service4 = new MyService({name: "Листовки А6 (105х148мм)", cost: 7.5,additionals: [
+    { name: "Люверсы", checked: false, cost: 160},
+    { name: "Карман", checked: false, cost: 100},
+    { name: "Проклейка/проварка", checked: false, cost: 100},
+    { name: "Резка в размер", checked: false, cost: 40},
+    { name: "Усиление шнуром", checked: false, cost: 480},
+    { name: "Плакатный профиль", checked: false, cost: 800},
+    { name: "Поля", checked: false, cost: 100}
+    ]});
+const Service5 = new MyService({name: "Листовка А4 (210х297мм)", cost: 25,additionals: [
+    { name: "Люверсы", checked: false, cost: 160},
+    { name: "Карман", checked: false, cost: 100},
+    { name: "Проклейка/проварка", checked: false, cost: 100},
+    { name: "Резка в размер", checked: false, cost: 40},
+    { name: "Усиление шнуром", checked: false, cost: 480},
+    { name: "Плакатный профиль", checked: false, cost: 800},
+    { name: "Поля", checked: false, cost: 100}
+    ]});
+const Service6 = new MyService({name: "Флаер (99х210мм)", cost: 10,additionals: [
+    { name: "Люверсы", checked: false, cost: 160},
+    { name: "Карман", checked: false, cost: 100},
+    { name: "Проклейка/проварка", checked: false, cost: 100},
+    { name: "Резка в размер", checked: false, cost: 40},
+    { name: "Усиление шнуром", checked: false, cost: 480},
+    { name: "Плакатный профиль", checked: false, cost: 800},
+    { name: "Поля", checked: false, cost: 100}
+    ]});
+const Service7 = new MyService({name: "Бланк А4 (210х297мм)", cost: 18,additionals: [
+    { name: "Люверсы", checked: false, cost: 160},
+    { name: "Карман", checked: false, cost: 100},
+    { name: "Проклейка/проварка", checked: false, cost: 100},
+    { name: "Резка в размер", checked: false, cost: 40},
+    { name: "Усиление шнуром", checked: false, cost: 480},
+    { name: "Плакатный профиль", checked: false, cost: 800},
+    { name: "Поля", checked: false, cost: 100}
+    ]});
+const Service8 = new MyService({name: "Наклейка А4 (210х297мм)", cost: 30,additionals: [
+    { name: "Люверсы", checked: false, cost: 160},
+    { name: "Карман", checked: false, cost: 100},
+    { name: "Проклейка/проварка", checked: false, cost: 100},
+    { name: "Резка в размер", checked: false, cost: 40},
+    { name: "Усиление шнуром", checked: false, cost: 480},
+    { name: "Плакатный профиль", checked: false, cost: 800},
+    { name: "Поля", checked: false, cost: 100}
+    ]});
+const Service9 = new MyService({name: "Наклейка А5 (148х210мм)", cost: 19,additionals: [
+    { name: "Люверсы", checked: false, cost: 160},
+    { name: "Карман", checked: false, cost: 100},
+    { name: "Проклейка/проварка", checked: false, cost: 100},
+    { name: "Резка в размер", checked: false, cost: 40},
+    { name: "Усиление шнуром", checked: false, cost: 480},
+    { name: "Плакатный профиль", checked: false, cost: 800},
+    { name: "Поля", checked: false, cost: 100}
+    ]});
+const Service10 = new MyService({name: "Наклейка А6 (105х148мм)", cost: 15,additionals: [
+    { name: "Люверсы", checked: false, cost: 160},
+    { name: "Карман", checked: false, cost: 100},
+    { name: "Проклейка/проварка", checked: false, cost: 100},
+    { name: "Резка в размер", checked: false, cost: 40},
+    { name: "Усиление шнуром", checked: false, cost: 480},
+    { name: "Плакатный профиль", checked: false, cost: 800},
+    { name: "Поля", checked: false, cost: 100}
+    ]});
+const Service11 = new MyService({name: "Открытка А5 (148х210мм)", cost: 36,additionals: [
+    { name: "Люверсы", checked: false, cost: 160},
+    { name: "Карман", checked: false, cost: 100},
+    { name: "Проклейка/проварка", checked: false, cost: 100},
+    { name: "Резка в размер", checked: false, cost: 40},
+    { name: "Усиление шнуром", checked: false, cost: 480},
+    { name: "Плакатный профиль", checked: false, cost: 800},
+    { name: "Поля", checked: false, cost: 100}
+    ]});
+const Service12 = new MyService({name: "Постер А3 (297х420мм)", cost: 45,additionals: [
+    { name: "Люверсы", checked: false, cost: 160},
+    { name: "Карман", checked: false, cost: 100},
+    { name: "Проклейка/проварка", checked: false, cost: 100},
+    { name: "Резка в размер", checked: false, cost: 40},
+    { name: "Усиление шнуром", checked: false, cost: 480},
+    { name: "Плакатный профиль", checked: false, cost: 800},
+    { name: "Поля", checked: false, cost: 100}
+    ]});
+const Service13 = new MyService({name: "Грамота / Сертификат, А4 (297х210)", cost: 55,additionals: [
+    { name: "Люверсы", checked: false, cost: 160},
+    { name: "Карман", checked: false, cost: 100},
+    { name: "Проклейка/проварка", checked: false, cost: 100},
+    { name: "Резка в размер", checked: false, cost: 40},
+    { name: "Усиление шнуром", checked: false, cost: 480},
+    { name: "Плакатный профиль", checked: false, cost: 800},
+    { name: "Поля", checked: false, cost: 100}
+    ]});
+const Service14 = new MyService({name: "Изделие домик (на стол), высота 170мм", cost: 46,additionals: [
+    { name: "Люверсы", checked: false, cost: 160},
+    { name: "Карман", checked: false, cost: 100},
+    { name: "Проклейка/проварка", checked: false, cost: 100},
+    { name: "Резка в размер", checked: false, cost: 40},
+    { name: "Усиление шнуром", checked: false, cost: 480},
+    { name: "Плакатный профиль", checked: false, cost: 800},
+    { name: "Поля", checked: false, cost: 100}
+    ]});
 
-const Services = [Service0, Service1, Service2, Service3, Service4, Service5, Service6, Service7, Service8, Service9, Service10, Service11, Service12, Service13, Service14]
-useEffect(() => {     
-    setPriceCost(Services.find(item=> item.name === PriceName).cost);
-    console.log(PriceCost);
-    console.log(PriceName);
+const Services = [Service0, Service1, Service2, Service3, Service4, Service5, Service6, Service7, Service8, Service9, Service10, Service11, Service12, Service13, Service14];
+
+useEffect(() => {  
+    setServiceActive(Services.find(item=> item.name === PriceName));   
 }, [PriceName]);
+
+useEffect(() =>{
+    setPriceCost(ServiceActive.cost);
+    setListAdditions(ServiceActive.additionals);
+    //if (ListAdditions !== ServiceActive.additionals) {setListAdditions(ServiceActive.additionals);}
+},[ServiceActive]);
 
 //    Размер
 let [Width, setWidth] = useState(1);           // Ширина
@@ -95,7 +218,45 @@ useEffect(() => { setPriceQuantity(PriceQuantity);
     //console.log(PriceQuantity )
 }, [PriceQuantity]);
 
+//   ============= Дополнения ===============
 
+
+
+const Checkbox = ({ isChecked, label, checkHandler, index }) => {
+    if (index !== 0 ){
+    return (
+      <div> 
+        <input
+          type="checkbox"
+          id={`checkbox-${index}`}
+          checked={isChecked}
+          onChange={checkHandler}
+        />
+        <label htmlFor={`checkbox-${index}`}>{label}</label>
+      </div>
+    )}
+  }
+  
+  
+    const updateCheckStatus = index => { 
+      setListAdditions(
+        ListAdditions.map((Additions, currentIndex) =>
+          currentIndex === index ? { ...Additions, checked: !Additions.checked 
+          }  : Additions
+        )
+      ) 
+    }
+  
+  
+    useEffect(() => { 
+    let arrAddObj = ListAdditions.filter((ListAdditions) => ListAdditions.checked === true);
+    let arrAdd = arrAddObj.map((obj)=>  [obj.name, "            ", obj.cost, <br/> ] );
+    let fullCostAdd = 0; 
+    arrAddObj.map((obj)=>{ fullCostAdd+= obj.cost  });
+    setSumPriceAdditions(fullCostAdd);
+    setListCheckedAdditions(  arrAdd  ); 
+  }, [ListAdditions]);
+  
 //=====================================================================================================================
 return(
 <div className="calcForm_flex shadow mb-5 bg-white rounded">
@@ -138,13 +299,33 @@ return(
                   </div>
                 </div>
               </div>
+{/*=====================  Дополнения  ====================================*/}
+<div className='frm_line mt-5'>
+                <div className='frm_flab d-flex justify-content-between fw-bold'>
+                <span>Дополнительные опции</span>
+                </div>
+                              
+            {ListAdditions.map((additions, index) => (
+            <div className='d-flex justify-content-between align-content-around'>
+            
+            <Checkbox
+                key={additions.name}
+                isChecked={additions.checked}
+                checkHandler={() => updateCheckStatus(index)}
+                label={additions.name}
+                index={index}
+                
+              /> 
+            </div>
+            )) }
+</div>
 
 {/*============================== END Вариабельная часть ===========================================================================*/}
         </div>
     </div>
 {/*============================== Форма заказа ===========================================================================*/}
 <div className="calcForm_price">
-        <Price PriceName={PriceName} PriceCost={PriceCost} Area={Area} PriceFactorResolution={PriceFactorResolution} PriceQuantity={PriceQuantity} />
+        <Price PriceName={PriceName} PriceCost={PriceCost} Area={Area} PriceFactorResolution={PriceFactorResolution} PriceQuantity={PriceQuantity} ListCheckedAdditions={ListCheckedAdditions}  SumPriceAdditions ={SumPriceAdditions}/>
     </div>
 </div>
 )};

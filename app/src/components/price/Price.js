@@ -29,18 +29,20 @@ useEffect(() => {
     setPropsPriceQuantity(props.PriceQuantity);
 }, [PropsPriceQuantity, props.PriceQuantity]);
 
-let [FullPrice, setFullPrice] = useState(0);
-useEffect(() => {
-    setFullPrice(Math.round(PropsCost*PropsArea*PropsFactor*PropsPriceQuantity))
-}, [PropsArea, props.Area, PropsCost, props.PriceCost, PropsFactor, props.PriceFactorResolution, PropsPriceQuantity, props.PropsPriceQuantity]);
 
 let [PriceAddition, setPriceAddition] = useState([]);
+let [SumPriceAdditions, setSumPriceAdditions] = useState(props.SumPriceAdditions);
 useEffect(() => {
     setPriceAddition(props.ListCheckedAdditions);
-}, [PriceAddition, props.ListCheckedAdditions]);
+    setSumPriceAdditions(props.SumPriceAdditions);
+
+}, [PriceAddition, props.ListCheckedAdditions, props.SumPriceAdditions]);
 
 
-
+let [FullPrice, setFullPrice] = useState(0);
+useEffect(() => {
+    setFullPrice(Math.round(PropsCost*PropsArea*PropsFactor*PropsPriceQuantity + SumPriceAdditions*PropsPriceQuantity))
+}, [PropsArea, props.Area, PropsCost, props.PriceCost, PropsFactor, props.PriceFactorResolution, PropsPriceQuantity, props.PropsPriceQuantity, props.SumPriceAdditions, SumPriceAdditions]);
 
 
 
