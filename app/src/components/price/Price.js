@@ -34,6 +34,17 @@ useEffect(() => {
     setFullPrice(Math.round(PropsCost*PropsArea*PropsFactor*PropsPriceQuantity))
 }, [PropsArea, props.Area, PropsCost, props.PriceCost, PropsFactor, props.PriceFactorResolution, PropsPriceQuantity, props.PropsPriceQuantity]);
 
+let [PriceAddition, setPriceAddition] = useState([]);
+useEffect(() => {
+    setPriceAddition(props.ListCheckedAdditions);
+}, [PriceAddition, props.ListCheckedAdditions]);
+
+
+
+
+
+
+
 
 const Options = (PropsAdd) => {
 return (
@@ -59,7 +70,7 @@ return (
                 <div className="text-success">{PropsName}</div><br/>
                 Включены услуги:
                 </div>
-{/*Options(PropsAdd)*/}
+                {PriceAddition}
                 <div className="klientdescount">
                 <span className="vp_wr">
                     <span className="vp_atext">Скидка постоянного клиента

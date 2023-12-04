@@ -31,8 +31,9 @@ export const Checkbox = ({ isChecked, label, checkHandler, index }) => {
   )
 }
 
-function App() {
+function AddCheckbox() {
   const [toppings, setToppings] = useState(allToppings)
+  toppings.map((toping)=> {console.log( toping.name, toping.checked, toping.cost, toping.info)});
 
   const updateCheckStatus = index => {
     setToppings(
@@ -43,16 +44,10 @@ function App() {
       )
     )
 
-    // or
-    // setToppings([
-    //   ...toppings.slice(0, index),
-    //   { ...toppings[index], checked: !toppings[index].checked },
-    //   ...toppings.slice(index + 1),
-    // ]);
   }
 
   return (
-    <div className="App">
+    <div className="">
       {toppings.map((topping, index) => (
         <Checkbox
           key={topping.name}
@@ -63,10 +58,10 @@ function App() {
         />
       ))}
       <p>
-        <pre>{JSON.stringify(toppings, null, 2)}</pre>
+
       </p>
     </div>
   )
 }
 
-export default App
+export default AddCheckbox

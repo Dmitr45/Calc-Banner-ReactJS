@@ -12,7 +12,6 @@ import StickerPackPage from './page/StickerPack.js';
 import UVprintingPage from './page/UVprinting.js';
 
 
-
 function App() {
 
 
@@ -100,7 +99,6 @@ function NowPage(){
 
 {/*============================== Страница ======================================================++++++++++============*/}
 <NowPage/>
-
 {/*============================== Footer ===============================================================================*/}
 </div>
       <div className="calcForm_footer">
@@ -109,6 +107,7 @@ function NowPage(){
         <a href="ya.ru" className="link">Разрешение печати</a>
         <a href="ya.ru" className="link">Как оформить заказ</a>
       </div>
+
     </div>
   );}
 

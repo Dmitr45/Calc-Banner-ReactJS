@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import Price from '../components/price/Price'; // Компонент ценового предложения
-import Additional from '../components/additional/Additional';  // Дополнительные опции
+
 
 export default function BannerPage() { 
 
@@ -24,13 +24,15 @@ class MyPrice {
     }
 }
 let [PriceName, setPriceName] = useState("Выберите материал");
+let [ServiceActive, setServiceActive  ] = useState({name: "Выберите материал", cost: 0 , additionals: [ ]});
 let [PriceCategory, setPriceCategory] = useState("Баннеры");
 let [PriceCost, setPriceCost] = useState(0);
 let [PriceFactor, setPriceFactor] = useState(1);
 let [PriceArea, setPriceArea] = useState(1);
 let [PriceQuantity, setPriceQuantity] = useState(1);
 let [PriceAdd, setPriceAdd] = useState([["Дополнений нет",0]]);
-
+let [ListAdditions, setListAdditions] = useState([]);
+let [ListCheckedAdditions, setListCheckedAdditions] = useState([]);
 
 
 //================================= Вариабельная часть логики ======================================================================
@@ -38,10 +40,20 @@ class MyService {
     constructor(params){
         this.name = params.name
         this.cost = params.cost
+        this.additionals = params.additionals
+        this.index = params.index
     }
 }
-const Service0 = new MyService({name: "Выберите материал", cost: 0});
-const Service1 = new MyService({name: "Баннер ламинированный 440гр", cost: 420});
+const Service0 = new MyService({name: "Выберите материал", cost: 0
+,additionals: [ 
+{ name: "Люверсы", checked: false, cost: 160, info:  "Люверсы - металлические отверстия круглой формы состоящие из двух частей – кольца и элемента с втулкой. Устанавливают по периметру полотна с подворотом края. Предназначены для качественного натяжения и крепления полотна." }
+]});
+const Service1 = new MyService({name: "Баннер ламинированный 440гр", cost: 420
+,additionals: [
+{ name: "Люверсы", checked: false, cost: 160, info:  "Люверсы - металлические отверстия круглой формы состоящие из двух частей – кольца и элемента с втулкой. Устанавливают по периметру полотна с подворотом края. Предназначены для качественного натяжения и крепления полотна." },
+{ name: "Карман", checked: false, cost: 100,  info: "Карман под утяжелитель - размещается в нижней части баннера для размещения утяжеляющих элементов. Если нужны карманы не только снизу, просьба прописывать это в задании." },
+]
+});
 const Service2 = new MyService({name: "Баннер литой 510гр", cost: 490});
 const Service3 = new MyService({name: "Блэкаут светоблокирующий односторонний", cost: 500});
 const Service4 = new MyService({name: "Сетка баннерная", cost: 360});
@@ -54,10 +66,11 @@ const Service10 = new MyService({name: "Флаг", cost: 0});
 
 const Services = [Service0, Service1, Service2, Service3, Service4, Service5, Service6, Service7, Service8, Service9, Service10]
 
-useEffect(() => {     
-    setPriceCost(Services.find(item=> item.name === PriceName).cost);
-    console.log(PriceCost);
-    console.log(PriceName);
+useEffect(() => {  
+    setServiceActive(Services.find(item=> item.name === PriceName));   
+    setPriceCost(ServiceActive.cost);
+    setListAdditions(ServiceActive.additionals);
+    
 }, [PriceName]);
 
 
@@ -84,7 +97,7 @@ let [PriceNameResolution, setPriceNameResolution] = useState();
 
     useEffect(() => { setPriceFactor(PriceFactor);
         setPriceFactorResolution(PriceFactor);
-        console.log(PriceFactor,  PriceFactorResolution )
+        
     }, [PriceFactor]);
 
     let dpi360 = new MyResolution ({name: "360 dpi - сольвентная печать", factor: 1}); 
@@ -99,25 +112,45 @@ useEffect(() => { setPriceQuantity(PriceQuantity);
 }, [PriceQuantity]);
 
 //   ============= Дополнения ===============
-class Additions {
-  constructor (params) {
-      this.activ = params.activ
-      this.name = params.name
-      this.cost = params.cost
-      this.info = params.info
-  }
-AdditionalInfo(){
-return [this.name, this.cost]
+
+
+
+const Checkbox = ({ isChecked, label, checkHandler, index }) => {
+  return (
+    <div>
+      <input
+        type="checkbox"
+        id={`checkbox-${index}`}
+        checked={isChecked}
+        onChange={checkHandler}
+      />
+      <label htmlFor={`checkbox-${index}`}>{label}</label>
+    </div>
+  )
 }
-};
-const Lyuversy = new Additions ({ name: "Люверсы", cost: 160, info:  "Люверсы - металлические отверстия круглой формы состоящие из двух частей – кольца и элемента с втулкой. Устанавливают по периметру полотна с подворотом края. Предназначены для качественного натяжения и крепления полотна." });
-const Karman = new Additions ({ name: "Карман", cost: 100,  info: "Карман под утяжелитель - размещается в нижней части баннера для размещения утяжеляющих элементов. Если нужны карманы не только снизу, просьба прописывать это в задании." });
 
 
-let [ListAdditions, setListAdditions] = useState([Lyuversy, Karman ]);
+  const updateCheckStatus = index => { 
+    //ListAdditions.map((Additions) => {console.log( Additions.name, index, Additions.checked, Additions.cost, Additions.info)});
 
+    setListAdditions(
+      ListAdditions.map((Additions, currentIndex) =>
+        currentIndex === index ? { ...Additions, checked: !Additions.checked 
+        }  : Additions
+      )
+    ) 
+  }
 
-//=====================================================================================================================
+  useEffect(() => { 
+  let arrAddObj = []; // [{}]
+  let arrAdd = []; // [  [],  []  ]
+
+  arrAddObj = ListAdditions.filter((ListAdditions) => ListAdditions.checked === true);
+  arrAdd = arrAddObj.map((obj)=>  [obj.name, "   ", obj.cost, <br/> ] );
+  setListCheckedAdditions(  arrAdd  ); 
+}, [ListAdditions]);
+
+  //=====================================================================================================================
 return(
 <div className="calcForm_flex shadow mb-5 bg-white rounded">
     <div className="calcForm_select">
@@ -258,7 +291,20 @@ return(
               </div>
 {/*=====================  Дополнения  ====================================*/}
 
-<Additional ListAdditions ={ListAdditions} />
+<div className="">
+      {ListAdditions.map((additions, index) => (
+        <Checkbox
+          key={additions.name}
+          isChecked={additions.checked}
+          checkHandler={() => updateCheckStatus(index)}
+          label={additions.name}
+          index={index}
+          
+        /> 
+      )) }
+      <p>
+      </p>
+</div>
 
 
 {/*============================== END Вариабельная часть ===========================================================================*/}
@@ -266,7 +312,7 @@ return(
     </div>
 {/*============================== Форма заказа ===========================================================================*/}
     <div className="calcForm_price">
-        <Price PriceName={PriceName} PriceCost={PriceCost} Area={Area} PriceFactorResolution={PriceFactorResolution} PriceQuantity={PriceQuantity} />
+        <Price PriceName={PriceName} PriceCost={PriceCost} Area={Area} PriceFactorResolution={PriceFactorResolution} PriceQuantity={PriceQuantity} ListCheckedAdditions={ListCheckedAdditions} />
     </div>
 </div>
 )};
