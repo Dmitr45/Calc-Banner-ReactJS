@@ -72,7 +72,15 @@ const Service3 = new MyService({name: "Пенокартон 5мм + накатк
   { name: "Плакатный профиль", checked: false, cost: 800},
   { name: "Поля", checked: false, cost: 100}
   ]});
-const Service4 = new MyService({name: "Пластик 3мм + светонакопительная пленка (планы эвакуации)", cost: 0});
+const Service4 = new MyService({name: "Пластик 3мм + светонакопительная пленка (планы эвакуации)", cost: 0,additionals: [
+  { name: "Люверсы", checked: false, cost: 160},
+  { name: "Карман", checked: false, cost: 100},
+  { name: "Проклейка/проварка", checked: false, cost: 100},
+  { name: "Резка в размер", checked: false, cost: 40},
+  { name: "Усиление шнуром", checked: false, cost: 480},
+  { name: "Плакатный профиль", checked: false, cost: 800},
+  { name: "Поля", checked: false, cost: 100}
+  ]});
 const Service5 = new MyService({name: "Пластик 10мм + накатка пленки", cost: 0,additionals: [
   { name: "Люверсы", checked: false, cost: 160},
   { name: "Карман", checked: false, cost: 100},
