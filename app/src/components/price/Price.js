@@ -168,7 +168,7 @@ function PriceForm() {
                         <input className="mt-2 mb-2 form-control ng-pristine ng-untouched ng-valid" type="text" onChange={(e) => setPromokod(e.target.value)} placeholder="Ваш код" size="7"></input>
                         <label className="d-grid">
                             <span>Ваше имя</span>
-                            <input className="mt-1 mb-1 form-control ng-pristine ng-untouched ng-invalid ng-invalid-required" type="text" value={NamePerson} onChange={(e) => setNamePerson(e.target.value)} placeholder="Михаил В." required="required"></input>
+                            <input className="mt-1 mb-1 form-control ng-pristine ng-untouched ng-invalid ng-invalid-required" type="text" onChange={(e) => setNamePerson(e.target.value)} placeholder="Михаил В." required="required"></input>
                         </label>
                     </div>
                     <div className="form-item"> 
