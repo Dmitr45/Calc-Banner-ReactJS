@@ -28,7 +28,7 @@ let [PriceCategory, setPriceCategory] = useState("Баннеры");
 let [PriceCost, setPriceCost] = useState(0);
 let [PriceFactor, setPriceFactor] = useState(1);
 let [PriceArea, setPriceArea] = useState(1);
-let [PriceQuantity, setPriceQuantity] = useState(1);
+let [PriceQuantity, setPriceQuantity] = useState(25);
 let [PriceAdd, setPriceAdd] = useState([["Дополнений нет",0]]);
 let [ListAdditions, setListAdditions] = useState([]);
 let [ListCheckedAdditions, setListCheckedAdditions] = useState([]);
@@ -46,130 +46,83 @@ class MyService {
 }
 const Service0 = new MyService({name: "Выберите материал", cost: 0 ,additionals: [ { }]});
 const Service1 = new MyService({name: "Визитки (50х90мм)", cost: 6,additionals: [
-    { name: "Люверсы", checked: false, cost: 160},
-    { name: "Карман", checked: false, cost: 100},
-    { name: "Проклейка/проварка", checked: false, cost: 100},
-    { name: "Резка в размер", checked: false, cost: 40},
-    { name: "Усиление шнуром", checked: false, cost: 480},
-    { name: "Плакатный профиль", checked: false, cost: 800},
-    { name: "Поля", checked: false, cost: 100}
+    { name: "Бумага Мелованная 200гр", checked: false, cost: 0},
+    { name: "Бумага Колоркопи 300гр", checked: false, cost: 0},
+    { name: "Бумага Мелованная 300гр", checked: false, cost: 0},
+    { name: "Цветность 4+0", checked: false, cost: 0},
+    { name: "Цветность 4+4", checked: false, cost: 0}
+
     ]});
 const Service2 = new MyService({name: "Листовки А5 (210х148мм)", cost: 16,additionals: [
-    { name: "Люверсы", checked: false, cost: 160},
-    { name: "Карман", checked: false, cost: 100},
-    { name: "Проклейка/проварка", checked: false, cost: 100},
-    { name: "Резка в размер", checked: false, cost: 40},
-    { name: "Усиление шнуром", checked: false, cost: 480},
-    { name: "Плакатный профиль", checked: false, cost: 800},
-    { name: "Поля", checked: false, cost: 100}
+    { name: "Бумага Мелованная 200гр", checked: false, cost: 0},
+    { name: "Бумага Колоркопи 300гр", checked: false, cost: 0},
+    { name: "Бумага Мелованная 300гр", checked: false, cost: 0},
+    { name: "Цветность 4+0", checked: false, cost: 0},
+    { name: "Цветность 4+4", checked: false, cost: 0}
     ]});
 const Service3 = new MyService({name: "Буклеты А4, 2 загиба", cost: 35,additionals: [
-    { name: "Люверсы", checked: false, cost: 160},
-    { name: "Карман", checked: false, cost: 100},
-    { name: "Проклейка/проварка", checked: false, cost: 100},
-    { name: "Резка в размер", checked: false, cost: 40},
-    { name: "Усиление шнуром", checked: false, cost: 480},
-    { name: "Плакатный профиль", checked: false, cost: 800},
-    { name: "Поля", checked: false, cost: 100}
+    { name: "Бумага Мелованная 200гр", checked: false, cost: 0},
+    { name: "Бумага Колоркопи 300гр", checked: false, cost: 0},
+    { name: "Бумага Мелованная 300гр", checked: false, cost: 0},
+    { name: "Цветность 4+4", checked: false, cost: 0}
     ]});
 const Service4 = new MyService({name: "Листовки А6 (105х148мм)", cost: 7.5,additionals: [
-    { name: "Люверсы", checked: false, cost: 160},
-    { name: "Карман", checked: false, cost: 100},
-    { name: "Проклейка/проварка", checked: false, cost: 100},
-    { name: "Резка в размер", checked: false, cost: 40},
-    { name: "Усиление шнуром", checked: false, cost: 480},
-    { name: "Плакатный профиль", checked: false, cost: 800},
-    { name: "Поля", checked: false, cost: 100}
+    { name: "Бумага Мелованная 200гр", checked: false, cost: 0},
+    { name: "Бумага Колоркопи 300гр", checked: false, cost: 0},
+    { name: "Бумага Мелованная 300гр", checked: false, cost: 0},
+    { name: "Цветность 4+0", checked: false, cost: 0},
+    { name: "Цветность 4+4", checked: false, cost: 0}
     ]});
 const Service5 = new MyService({name: "Листовка А4 (210х297мм)", cost: 25,additionals: [
-    { name: "Люверсы", checked: false, cost: 160},
-    { name: "Карман", checked: false, cost: 100},
-    { name: "Проклейка/проварка", checked: false, cost: 100},
-    { name: "Резка в размер", checked: false, cost: 40},
-    { name: "Усиление шнуром", checked: false, cost: 480},
-    { name: "Плакатный профиль", checked: false, cost: 800},
-    { name: "Поля", checked: false, cost: 100}
+    { name: "Бумага Мелованная 200гр", checked: false, cost: 0},
+    { name: "Бумага Колоркопи 300гр", checked: false, cost: 0},
+    { name: "Бумага Мелованная 300гр", checked: false, cost: 0},
+    { name: "Цветность 4+0", checked: false, cost: 0},
+    { name: "Цветность 4+4", checked: false, cost: 0}
     ]});
 const Service6 = new MyService({name: "Флаер (99х210мм)", cost: 10,additionals: [
-    { name: "Люверсы", checked: false, cost: 160},
-    { name: "Карман", checked: false, cost: 100},
-    { name: "Проклейка/проварка", checked: false, cost: 100},
-    { name: "Резка в размер", checked: false, cost: 40},
-    { name: "Усиление шнуром", checked: false, cost: 480},
-    { name: "Плакатный профиль", checked: false, cost: 800},
-    { name: "Поля", checked: false, cost: 100}
+    { name: "Бумага Мелованная 200гр", checked: false, cost: 0},
+    { name: "Бумага Колоркопи 300гр", checked: false, cost: 0},
+    { name: "Бумага Мелованная 300гр", checked: false, cost: 0},
+    { name: "Цветность 4+0", checked: false, cost: 0},
+    { name: "Цветность 4+4", checked: false, cost: 0}
     ]});
 const Service7 = new MyService({name: "Бланк А4 (210х297мм)", cost: 18,additionals: [
-    { name: "Люверсы", checked: false, cost: 160},
-    { name: "Карман", checked: false, cost: 100},
-    { name: "Проклейка/проварка", checked: false, cost: 100},
-    { name: "Резка в размер", checked: false, cost: 40},
-    { name: "Усиление шнуром", checked: false, cost: 480},
-    { name: "Плакатный профиль", checked: false, cost: 800},
-    { name: "Поля", checked: false, cost: 100}
+    { name: "Самоклеящаяся", checked: false, cost: 0},
+    { name: "Цветность 4+0", checked: false, cost: 0}
     ]});
 const Service8 = new MyService({name: "Наклейка А4 (210х297мм)", cost: 30,additionals: [
-    { name: "Люверсы", checked: false, cost: 160},
-    { name: "Карман", checked: false, cost: 100},
-    { name: "Проклейка/проварка", checked: false, cost: 100},
-    { name: "Резка в размер", checked: false, cost: 40},
-    { name: "Усиление шнуром", checked: false, cost: 480},
-    { name: "Плакатный профиль", checked: false, cost: 800},
-    { name: "Поля", checked: false, cost: 100}
+    { name: "Самоклеящаяся", checked: false, cost: 0},
+    { name: "Цветность 4+0", checked: false, cost: 0}
     ]});
 const Service9 = new MyService({name: "Наклейка А5 (148х210мм)", cost: 19,additionals: [
-    { name: "Люверсы", checked: false, cost: 160},
-    { name: "Карман", checked: false, cost: 100},
-    { name: "Проклейка/проварка", checked: false, cost: 100},
-    { name: "Резка в размер", checked: false, cost: 40},
-    { name: "Усиление шнуром", checked: false, cost: 480},
-    { name: "Плакатный профиль", checked: false, cost: 800},
-    { name: "Поля", checked: false, cost: 100}
+    { name: "Самоклеящаяся", checked: false, cost: 0},
+    { name: "Цветность 4+0", checked: false, cost: 0}
     ]});
 const Service10 = new MyService({name: "Наклейка А6 (105х148мм)", cost: 15,additionals: [
-    { name: "Люверсы", checked: false, cost: 160},
-    { name: "Карман", checked: false, cost: 100},
-    { name: "Проклейка/проварка", checked: false, cost: 100},
-    { name: "Резка в размер", checked: false, cost: 40},
-    { name: "Усиление шнуром", checked: false, cost: 480},
-    { name: "Плакатный профиль", checked: false, cost: 800},
-    { name: "Поля", checked: false, cost: 100}
+    { name: "Самоклеящаяся", checked: false, cost: 0},
+    { name: "Цветность 4+0", checked: false, cost: 0}
     ]});
 const Service11 = new MyService({name: "Открытка А5 (148х210мм)", cost: 36,additionals: [
-    { name: "Люверсы", checked: false, cost: 160},
-    { name: "Карман", checked: false, cost: 100},
-    { name: "Проклейка/проварка", checked: false, cost: 100},
-    { name: "Резка в размер", checked: false, cost: 40},
-    { name: "Усиление шнуром", checked: false, cost: 480},
-    { name: "Плакатный профиль", checked: false, cost: 800},
-    { name: "Поля", checked: false, cost: 100}
+    { name: "Бумага Мелованная 200гр", checked: false, cost: 0},
+    { name: "Бумага Мелованная 300гр", checked: false, cost: 0},
+    { name: "Цветность 4+0", checked: false, cost: 0}
     ]});
 const Service12 = new MyService({name: "Постер А3 (297х420мм)", cost: 45,additionals: [
-    { name: "Люверсы", checked: false, cost: 160},
-    { name: "Карман", checked: false, cost: 100},
-    { name: "Проклейка/проварка", checked: false, cost: 100},
-    { name: "Резка в размер", checked: false, cost: 40},
-    { name: "Усиление шнуром", checked: false, cost: 480},
-    { name: "Плакатный профиль", checked: false, cost: 800},
-    { name: "Поля", checked: false, cost: 100}
+    { name: "Бумага Мелованная 200гр", checked: false, cost: 0},
+    { name: "Бумага Колоркопи 300гр", checked: false, cost: 0},
+    { name: "Бумага Мелованная 300гр", checked: false, cost: 0},
+    { name: "Цветность 4+0", checked: false, cost: 0},
+    { name: "Цветность 4+4", checked: false, cost: 0}
     ]});
 const Service13 = new MyService({name: "Грамота / Сертификат, А4 (297х210)", cost: 55,additionals: [
-    { name: "Люверсы", checked: false, cost: 160},
-    { name: "Карман", checked: false, cost: 100},
-    { name: "Проклейка/проварка", checked: false, cost: 100},
-    { name: "Резка в размер", checked: false, cost: 40},
-    { name: "Усиление шнуром", checked: false, cost: 480},
-    { name: "Плакатный профиль", checked: false, cost: 800},
-    { name: "Поля", checked: false, cost: 100}
+    { name: "Бумага Колоркопи 300гр", checked: false, cost: 0},
+    { name: "Бумага Мелованная 300гр", checked: false, cost: 0},
+    { name: "Цветность 4+0", checked: false, cost: 0}
     ]});
 const Service14 = new MyService({name: "Изделие домик (на стол), высота 170мм", cost: 46,additionals: [
-    { name: "Люверсы", checked: false, cost: 160},
-    { name: "Карман", checked: false, cost: 100},
-    { name: "Проклейка/проварка", checked: false, cost: 100},
-    { name: "Резка в размер", checked: false, cost: 40},
-    { name: "Усиление шнуром", checked: false, cost: 480},
-    { name: "Плакатный профиль", checked: false, cost: 800},
-    { name: "Поля", checked: false, cost: 100}
+    { name: "Бумага Мелованная 300гр", checked: false, cost: 0},
+    { name: "Цветность 4+0", checked: false, cost: 0}
     ]});
 
 const Services = [Service0, Service1, Service2, Service3, Service4, Service5, Service6, Service7, Service8, Service9, Service10, Service11, Service12, Service13, Service14];
@@ -299,10 +252,38 @@ return(
                   </div>
                 </div>
               </div>
+              {/*=====================  Количество  ====================================*/}
+<div className='frm_line mt-5'>
+                <div className='frm_flab d-flex justify-content-between fw-bold'>
+                <span>Тираж</span>
+                </div>
+                <div className='frm_inp'>
+                  <div className='frm_inpline'>
+                  <div className="row">
+                  <div className="col-sm">
+                    <div className='csel ng-pristine ng-untouched ng-valid'>
+                    <form>
+                      <input 
+                      name="Width"
+                      type="number"
+                      className="mt-2 mb-2 form-control ng-pristine ng-untouched ng-valid"
+                      value={PriceQuantity}
+                      onChange={(e) =>
+                        setPriceQuantity(e.target.value)}
+                      > 
+                      </input> 
+                    </form>
+                    </div>
+                    </div>
+                    <div className="col-sm"><span>В штуках, кратный 25</span></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
 {/*=====================  Дополнения  ====================================*/}
 <div className='frm_line mt-5'>
                 <div className='frm_flab d-flex justify-content-between fw-bold'>
-                <span>Дополнительные опции</span>
+                <span>Уточните параметры:</span>
                 </div>
                               
             {ListAdditions.map((additions, index) => (

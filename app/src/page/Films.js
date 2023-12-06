@@ -46,31 +46,20 @@ class MyService {
 }
 const Service0 = new MyService({name: "Выберите материал", cost: 0 ,additionals: [ { }]});
 const Service1 = new MyService({name: "Обои флезилиновые", cost: 950,additionals: [
-  { name: "Люверсы", checked: false, cost: 160},
-  { name: "Карман", checked: false, cost: 100},
-  { name: "Проклейка/проварка", checked: false, cost: 100},
-  { name: "Резка в размер", checked: false, cost: 40},
-  { name: "Усиление шнуром", checked: false, cost: 480},
-  { name: "Плакатный профиль", checked: false, cost: 800},
-  { name: "Поля", checked: false, cost: 100}
+  { name: "Резка в размер", checked: false, cost: 40}
   ]});
 const Service2 = new MyService({name: "Фотобумага 220гр", cost: 580,additionals: [
   { name: "Люверсы", checked: false, cost: 160},
-  { name: "Карман", checked: false, cost: 100},
-  { name: "Проклейка/проварка", checked: false, cost: 100},
-  { name: "Резка в размер", checked: false, cost: 40},
-  { name: "Усиление шнуром", checked: false, cost: 480},
+  { name: "Ламинация", checked: false, cost: 320},
   { name: "Плакатный профиль", checked: false, cost: 800},
-  { name: "Поля", checked: false, cost: 100}
+  { name: "Приклейка скотча", checked: false, cost: 400}
   ]});
 const Service3 = new MyService({name: "Постерная бумага 150гр", cost: 460,additionals: [
-  { name: "Люверсы", checked: false, cost: 160},
-  { name: "Карман", checked: false, cost: 100},
-  { name: "Проклейка/проварка", checked: false, cost: 100},
   { name: "Резка в размер", checked: false, cost: 40},
-  { name: "Усиление шнуром", checked: false, cost: 480},
+  { name: "Люверсы", checked: false, cost: 160},
+  { name: "Ламинация", checked: false, cost: 320},
   { name: "Плакатный профиль", checked: false, cost: 800},
-  { name: "Поля", checked: false, cost: 100}
+  { name: "Приклейка скотча", checked: false, cost: 400}
   ]});
 const Services = [Service0, Service1, Service2, Service3]
 

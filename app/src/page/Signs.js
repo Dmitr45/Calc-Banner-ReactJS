@@ -46,67 +46,110 @@ class MyService {
 }
 const Service0 = new MyService({name: "Выберите материал", cost: 0 ,additionals: [ { }]});
 const Service1 = new MyService({name: "Пластик 3мм + накатка пленки", cost: 0,additionals: [
-  { name: "Люверсы", checked: false, cost: 160},
-  { name: "Карман", checked: false, cost: 100},
-  { name: "Проклейка/проварка", checked: false, cost: 100},
+  { name: "Ламинация", checked: false, cost: 320},
   { name: "Резка в размер", checked: false, cost: 40},
-  { name: "Усиление шнуром", checked: false, cost: 480},
-  { name: "Плакатный профиль", checked: false, cost: 800},
-  { name: "Поля", checked: false, cost: 100}
+  { name: "УФ печать", checked: false, cost: 0},
+  { name: "Изображение с двух сторон", checked: false, cost: 0},
+  { name: "фрезерная резка", checked: false, cost: 0},
+  { name: "Установка металлического профиля", checked: false, cost: 32},
+  { name: "Приклейка скотча", checked: false, cost: 4},
+  { name: "Установка петель", checked: false, cost: 120},
+  { name: "Сверление отверстий", checked: false, cost: 80},
+  { name: "Дистанционные держатели", checked: false, cost: 440},
+  { name: "Люверсы по углам", checked: false, cost: 120},
+  { name: "Плоский карман А4", checked: false, cost: 250},
+  { name: "Скругление углов", checked: false, cost: 200}
+
   ]});
 const Service2 = new MyService({name: "Пластик 5мм + накатка пленки", cost: 0,additionals: [
-  { name: "Люверсы", checked: false, cost: 160},
-  { name: "Карман", checked: false, cost: 100},
-  { name: "Проклейка/проварка", checked: false, cost: 100},
+  { name: "Ламинация", checked: false, cost: 320},
   { name: "Резка в размер", checked: false, cost: 40},
-  { name: "Усиление шнуром", checked: false, cost: 480},
-  { name: "Плакатный профиль", checked: false, cost: 800},
-  { name: "Поля", checked: false, cost: 100}
+  { name: "УФ печать", checked: false, cost: 0},
+  { name: "Изображение с двух сторон", checked: false, cost: 0},
+  { name: "фрезерная резка", checked: false, cost: 0},
+  { name: "Установка металлического профиля", checked: false, cost: 32},
+  { name: "Приклейка скотча", checked: false, cost: 4},
+  { name: "Установка петель", checked: false, cost: 120},
+  { name: "Сверление отверстий", checked: false, cost: 80},
+  { name: "Дистанционные держатели", checked: false, cost: 440},
+  { name: "Люверсы по углам", checked: false, cost: 120},
+  { name: "Плоский карман А4", checked: false, cost: 250},
+  { name: "Скругление углов", checked: false, cost: 200}
   ]});
 const Service3 = new MyService({name: "Пенокартон 5мм + накатка пленки", cost: 0,additionals: [
-  { name: "Люверсы", checked: false, cost: 160},
-  { name: "Карман", checked: false, cost: 100},
-  { name: "Проклейка/проварка", checked: false, cost: 100},
+  { name: "Ламинация", checked: false, cost: 320},
   { name: "Резка в размер", checked: false, cost: 40},
-  { name: "Усиление шнуром", checked: false, cost: 480},
-  { name: "Плакатный профиль", checked: false, cost: 800},
-  { name: "Поля", checked: false, cost: 100}
+  { name: "УФ печать", checked: false, cost: 0},
+  { name: "Изображение с двух сторон", checked: false, cost: 0},
+  { name: "фрезерная резка", checked: false, cost: 0},
+  { name: "Установка металлического профиля", checked: false, cost: 32},
+  { name: "Приклейка скотча", checked: false, cost: 4},
+  { name: "Установка петель", checked: false, cost: 120},
+  { name: "Сверление отверстий", checked: false, cost: 80},
+  { name: "Дистанционные держатели", checked: false, cost: 440},
+  { name: "Люверсы по углам", checked: false, cost: 120},
+  { name: "Плоский карман А4", checked: false, cost: 250},
+  { name: "Скругление углов", checked: false, cost: 200}
   ]});
 const Service4 = new MyService({name: "Пластик 3мм + светонакопительная пленка (планы эвакуации)", cost: 0,additionals: [
-  { name: "Люверсы", checked: false, cost: 160},
-  { name: "Карман", checked: false, cost: 100},
-  { name: "Проклейка/проварка", checked: false, cost: 100},
+  { name: "Ламинация", checked: false, cost: 320},
   { name: "Резка в размер", checked: false, cost: 40},
-  { name: "Усиление шнуром", checked: false, cost: 480},
-  { name: "Плакатный профиль", checked: false, cost: 800},
-  { name: "Поля", checked: false, cost: 100}
+  { name: "УФ печать", checked: false, cost: 0},
+  { name: "Изображение с двух сторон", checked: false, cost: 0},
+  { name: "фрезерная резка", checked: false, cost: 0},
+  { name: "Установка металлического профиля", checked: false, cost: 32},
+  { name: "Приклейка скотча", checked: false, cost: 4},
+  { name: "Установка петель", checked: false, cost: 120},
+  { name: "Сверление отверстий", checked: false, cost: 80},
+  { name: "Дистанционные держатели", checked: false, cost: 440},
+  { name: "Люверсы по углам", checked: false, cost: 120},
+  { name: "Плоский карман А4", checked: false, cost: 250},
+  { name: "Скругление углов", checked: false, cost: 200}
   ]});
 const Service5 = new MyService({name: "Пластик 10мм + накатка пленки", cost: 0,additionals: [
-  { name: "Люверсы", checked: false, cost: 160},
-  { name: "Карман", checked: false, cost: 100},
-  { name: "Проклейка/проварка", checked: false, cost: 100},
+  { name: "Ламинация", checked: false, cost: 320},
   { name: "Резка в размер", checked: false, cost: 40},
-  { name: "Усиление шнуром", checked: false, cost: 480},
-  { name: "Плакатный профиль", checked: false, cost: 800},
-  { name: "Поля", checked: false, cost: 100}
+  { name: "УФ печать", checked: false, cost: 0},
+  { name: "Изображение с двух сторон", checked: false, cost: 0},
+  { name: "фрезерная резка", checked: false, cost: 0},
+  { name: "Установка металлического профиля", checked: false, cost: 32},
+  { name: "Приклейка скотча", checked: false, cost: 4},
+  { name: "Установка петель", checked: false, cost: 120},
+  { name: "Сверление отверстий", checked: false, cost: 80},
+  { name: "Дистанционные держатели", checked: false, cost: 440},
+  { name: "Люверсы по углам", checked: false, cost: 120},
+  { name: "Плоский карман А4", checked: false, cost: 250},
+  { name: "Скругление углов", checked: false, cost: 200}
   ]});
 const Service6 = new MyService({name: "Пластик 5мм ЧЕРНЫЙ", cost: 0,additionals: [
-  { name: "Люверсы", checked: false, cost: 160},
-  { name: "Карман", checked: false, cost: 100},
-  { name: "Проклейка/проварка", checked: false, cost: 100},
+  { name: "Ламинация", checked: false, cost: 320},
   { name: "Резка в размер", checked: false, cost: 40},
-  { name: "Усиление шнуром", checked: false, cost: 480},
-  { name: "Плакатный профиль", checked: false, cost: 800},
-  { name: "Поля", checked: false, cost: 100}
+  { name: "УФ печать", checked: false, cost: 0},
+  { name: "Изображение с двух сторон", checked: false, cost: 0},
+  { name: "фрезерная резка", checked: false, cost: 0},
+  { name: "Установка металлического профиля", checked: false, cost: 32},
+  { name: "Приклейка скотча", checked: false, cost: 4},
+  { name: "Установка петель", checked: false, cost: 120},
+  { name: "Сверление отверстий", checked: false, cost: 80},
+  { name: "Дистанционные держатели", checked: false, cost: 440},
+  { name: "Люверсы по углам", checked: false, cost: 120},
+  { name: "Плоский карман А4", checked: false, cost: 250},
+  { name: "Скругление углов", checked: false, cost: 200}
   ]});
 const Service7 = new MyService({name: "Пластик 1мм", cost: 0,additionals: [
-  { name: "Люверсы", checked: false, cost: 160},
-  { name: "Карман", checked: false, cost: 100},
-  { name: "Проклейка/проварка", checked: false, cost: 100},
+  { name: "Ламинация", checked: false, cost: 320},
   { name: "Резка в размер", checked: false, cost: 40},
-  { name: "Усиление шнуром", checked: false, cost: 480},
-  { name: "Плакатный профиль", checked: false, cost: 800},
-  { name: "Поля", checked: false, cost: 100}
+  { name: "УФ печать", checked: false, cost: 0},
+  { name: "Изображение с двух сторон", checked: false, cost: 0},
+  { name: "фрезерная резка", checked: false, cost: 0},
+  { name: "Установка металлического профиля", checked: false, cost: 32},
+  { name: "Приклейка скотча", checked: false, cost: 4},
+  { name: "Установка петель", checked: false, cost: 120},
+  { name: "Сверление отверстий", checked: false, cost: 80},
+  { name: "Дистанционные держатели", checked: false, cost: 440},
+  { name: "Люверсы по углам", checked: false, cost: 120},
+  { name: "Плоский карман А4", checked: false, cost: 250},
+  { name: "Скругление углов", checked: false, cost: 200}
   ]});
 
 const Services = [Service0, Service1, Service2, Service3, Service4, Service5, Service6, Service7];

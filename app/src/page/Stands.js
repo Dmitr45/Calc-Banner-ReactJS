@@ -46,40 +46,23 @@ class MyService {
 }
 const Service0 = new MyService({name: "Выберите материал", cost: 0 ,additionals: [ { }]});
 const Service1 = new MyService({name: "Orakal", cost: 0,additionals: [
-  { name: "Люверсы", checked: false, cost: 160},
-  { name: "Карман", checked: false, cost: 100},
-  { name: "Проклейка/проварка", checked: false, cost: 100},
-  { name: "Резка в размер", checked: false, cost: 40},
-  { name: "Усиление шнуром", checked: false, cost: 480},
-  { name: "Плакатный профиль", checked: false, cost: 800},
-  { name: "Поля", checked: false, cost: 100}
+  { name: "Выборка", checked: false, cost: 0},
+  { name: "Закатка в монтажную пленку", checked: false, cost: 0},
+  { name: "Ламинация", checked: false, cost: 320}
   ]});
 const Service2 = new MyService({name: "Пленка с полноцветной печатью", cost: 0,additionals: [
-  { name: "Люверсы", checked: false, cost: 160},
-  { name: "Карман", checked: false, cost: 100},
-  { name: "Проклейка/проварка", checked: false, cost: 100},
-  { name: "Резка в размер", checked: false, cost: 40},
-  { name: "Усиление шнуром", checked: false, cost: 480},
-  { name: "Плакатный профиль", checked: false, cost: 800},
-  { name: "Поля", checked: false, cost: 100}
+  { name: "Выборка", checked: false, cost: 0},
+  { name: "Закатка в монтажную пленку", checked: false, cost: 0},
+  { name: "Ламинация", checked: false, cost: 320},
+  { name: "Напольная ламинация", checked: false, cost: 0}
   ]});
 const Service3 = new MyService({name: "Пленка с УФ печатью", cost: 0,additionals: [
-  { name: "Люверсы", checked: false, cost: 160},
-  { name: "Карман", checked: false, cost: 100},
-  { name: "Проклейка/проварка", checked: false, cost: 100},
-  { name: "Резка в размер", checked: false, cost: 40},
-  { name: "Усиление шнуром", checked: false, cost: 480},
-  { name: "Плакатный профиль", checked: false, cost: 800},
-  { name: "Поля", checked: false, cost: 100}
+  { name: "Выборка", checked: false, cost: 0},
+  { name: "Закатка в монтажную пленку", checked: false, cost: 0},
+  { name: "Ламинация", checked: false, cost: 320}
   ]});
 const Service4 = new MyService({name: "Стикерпаки", cost: 0,additionals: [
-  { name: "Люверсы", checked: false, cost: 160},
-  { name: "Карман", checked: false, cost: 100},
-  { name: "Проклейка/проварка", checked: false, cost: 100},
-  { name: "Резка в размер", checked: false, cost: 40},
-  { name: "Усиление шнуром", checked: false, cost: 480},
-  { name: "Плакатный профиль", checked: false, cost: 800},
-  { name: "Поля", checked: false, cost: 100}
+  { name: "Белила в макете", checked: false, cost: 0}
   ]});
 
 const Services = [Service0, Service1, Service2, Service3, Service4];
