@@ -61,17 +61,17 @@ function NowPage(){
 //=====================================================================================================================
   return (
     <div className="App">
-      <header className="App-header">
-          <div className="wrap">
+      {/* <header className="App-header">
+          <div className="wrapApp">
           <img src={logo} className="App-logo" alt="logo" />
         </div>
-      </header>
+      </header> */}
 
 
       <div className='PageSelection block-b5subtheme-page-title'>
     <div className='row title_whis'>
         <div className='col-lg'>
-            <h1>{ListCategory[ActivCategory].title}</h1>
+            <div className='PageSelection_h1'>{ListCategory[ActivCategory].title}</div>
         </div>
         <div className='col-lg title_whis_text '>
             <div className='gridwrap_grey'>
